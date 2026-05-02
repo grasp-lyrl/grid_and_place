@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from .arena_shapes import *
 
 class Arena:
-    def __init__(self):
+    def __init__(self, gym, device="cpu"):
         self.gym = gym
         self.spatial_resolution = gym.spatial_resolution
         self.device = torch.device(device)

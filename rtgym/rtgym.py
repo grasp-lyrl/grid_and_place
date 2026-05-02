@@ -1,3 +1,4 @@
+import torch
 from rtgym.arena import Arena
 from rtgym.agent import Agent
 
@@ -9,3 +10,13 @@ class RatatouGym:
         self.device = torch.device(device)
         self.arena = Arena(self, device=device)
         self.agent = Agent(self, device=device)
+
+    def _on_arena_change(self):
+        self.agent._on_arena_change()
+
+    def init_arena_map(self, **kwargs):
+        self.arena.init_arena_map(**kwargs)
+
+    @property
+    def t_res(self):
+        return self.temporal_resolution

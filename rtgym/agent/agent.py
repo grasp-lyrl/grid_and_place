@@ -1,8 +1,8 @@
 import torch
 from typing import Union
-from rtgym.agent.control import TrajectoryGenerator, StepController
+from rtgym.agent.control import TrajectoryGenerator
 from rtgym.agent.neurons import Neurons
-from rtgym.data import AgentState, Trajectory
+from rtgym.dataclasses import AgentState, Trajectory
 
 
 class Agent:
@@ -36,12 +36,17 @@ class Agent:
             # Reinitialize control from profile
             if self.control is not None:
                 self.control._on_arena_change()
-                self.control = TrajectoryGenerator(self.gym, bhv_device=bhv_device)
+                self.control = TrajectoryGenerator(self.gym)
                 self.control.init_from_profile(self.control_profile)
 
             # Reinitialize neurons from profile
             if self.neurons is not None:
                 self._init_neurons_from_profile()
+
+    def init_control(self, control_profile: dict):
+        self.control_profile = control_profile
+        self.control = TrajectoryGenerator(self.gym)
+        self.control.init_from_profile(self.control_profile)
 
     def init_neurons(self, neuron_profiles: dict):
         self.neuron_profiles = neuron_profiles

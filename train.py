@@ -14,12 +14,21 @@ from utils.misc import setup_experiment
 
 
 class RectRoomEnv:
-    def __init__(self, env_config, masking_config, encode_horizon, device):
+    def __init__(self, env_config, encode_horizon, device):
         self.gym = RatatouGym(
             temporal_resolution=env_config.temporal_resolution,
             spatial_resolution=env_config.spatial_resolution,
             device=device,
         )
+        self.agent = self.gym.agent
+        self.arena = self.gym.arena
+
+        print("\033[96mInitializing arena map...\033[0m")
+        self.gym.init_arena_map(**env_config.arena_config)
+        self.agent.init_control(env_config.control_config)
+        self.agent.init_neurons(env_config.neuron_profiles)
+        self.sens_keys = list(env_config.neuron_profiles.keys())
+        print("\033[92mGym initialized.\033[0m")
 
 
 def main():
@@ -51,7 +60,9 @@ def main():
     # Environment
     env = RectRoomEnv(
         env_config=cfg.env,
-        masking_config=cfg.training.masking,
         encode_horizon=cfg.training.encode_horizon,
         device=device,
     )
+
+if __name__ == "__main__":
+    main()

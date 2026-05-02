@@ -18,28 +18,24 @@ env:
     look_around_scale: 0.0
   neuron_profiles:
     smc0:
-      type: weak_sm_cell
       sigma: 6
       seed: 42
       magnitude: 1
       n_cells: 256
       normalize: true
     smc1:
-      type: weak_sm_cell
       sigma: 8
       seed: 42
       magnitude: 1
       n_cells: 256
       normalize: true
     smc2:
-      type: weak_sm_cell
       sigma: 10
       seed: 42
       magnitude: 1
       n_cells: 256
       normalize: true
     smc3:
-      type: weak_sm_cell
       sigma: 12
       seed: 42
       magnitude: 1
