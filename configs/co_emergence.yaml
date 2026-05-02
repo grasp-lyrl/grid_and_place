@@ -1,0 +1,67 @@
+globle_seed: 42
+env:
+  temporal_resolution: 50
+  spatial_resolution: 1
+  traj_len: 100.0
+  arena_config:
+    shape: rectangle
+    dimensions: [220, 220]
+  control_config:
+    control_type: trajectory_generator
+    spd_mean: 40.0
+    spd_sd: 20.0
+    alpha_spd: 0.8
+    alpha_dir: 0.2
+    switch_dir_prob: 0.1
+    switch_spd_prob: 0.2
+    boundary_avoidance: 5
+    look_around_scale: 0.0
+  neuron_profiles:
+    smc0:
+      type: weak_sm_cell
+      sigma: 6
+      seed: 42
+      magnitude: 1
+      n_cells: 256
+      normalize: true
+    smc1:
+      type: weak_sm_cell
+      sigma: 8
+      seed: 42
+      magnitude: 1
+      n_cells: 256
+      normalize: true
+    smc2:
+      type: weak_sm_cell
+      sigma: 10
+      seed: 42
+      magnitude: 1
+      n_cells: 256
+      normalize: true
+    smc3:
+      type: weak_sm_cell
+      sigma: 12
+      seed: 42
+      magnitude: 1
+      n_cells: 256
+      normalize: true
+
+model:
+  d_clamped: 1024
+  d_free: 1024
+  alpha: 0.5
+  noise_level: 0.8
+
+training:
+  batch_size: 256
+  training_steps: 200000
+  lr: 5e-4
+  grad_clip: 1.0
+  encode_horizon: 10
+  homeostasis_eta: 0.001
+  masking_ratio: 0.2
+
+logging:
+  save_every: 2000
+  log_every: 1000
+  rma_decay: 0.995
