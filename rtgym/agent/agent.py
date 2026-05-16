@@ -62,13 +62,13 @@ class Agent:
             self.neurons.init_from_profile(self.neuron_profiles)
 
     def random_traverse(
-        self, duration: float, batch_size: int, init_state=None, pause_prob=0, **kwargs
+        self, duration_ts: int, batch_size: int, init_state=None, pause_prob=0, **kwargs
     ):
         # Continue from current state if no explicit init_state
         if init_state is None and self.state is not None and self.state.coord is not None:
             init_state = self.state
 
-        traj, state = self.control.generate_trajectory(duration, batch_size, init_state)
+        traj, state = self.control.generate_trajectory(duration_ts, batch_size, init_state)
 
         # Update agent state for continuation
         self.control.cur_state = state

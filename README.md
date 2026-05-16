@@ -13,3 +13,8 @@ Install pytorch following the instructions on https://pytorch.org/get-started/lo
 ```bash
 pip3 install torch
 ```
+
+## Run the base environment
+```bash
+python train.py --config co_emergence --name co_emergence --save_dir paper
+```

@@ -2,7 +2,7 @@ globle_seed: 42
 env:
   temporal_resolution: 50
   spatial_resolution: 1
-  traj_len: 100.0
+  n_traj: 20
   arena_config:
     shape: rectangle
     dimensions: [220, 220]
@@ -53,7 +53,7 @@ training:
   training_steps: 200000
   lr: 5e-4
   grad_clip: 1.0
-  encode_horizon: 10
+  trajectory_len: 10
   homeostasis_eta: 0.001
   masking_ratio: 0.2
 

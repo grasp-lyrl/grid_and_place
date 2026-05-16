@@ -1,4 +1,5 @@
 import torch
+import torch.nn.functional as F
 from typing import Union
 from rtgym.agent.utils import hash_seed
 from rtgym.dataclasses import AgentState, Trajectory
@@ -23,6 +24,7 @@ class SpatiallyModulatedCells:
         assert isinstance(self.sigma, (int, float)) and self.sigma > 0, "sigma must be positive"
 
         self.sigma = self.sigma / self.arena.spatial_resolution
+        self._init_response_map()
 
     def _init_response_map(self):
         print(f"  [{self.sensory_key}] Computing response map "

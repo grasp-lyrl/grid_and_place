@@ -93,7 +93,7 @@ class TrajectoryGenerator(BaseControl):
             self.initialized = False
 
     def generate_trajectory(
-        self, duration: float, batch_size: int, init_state=None
+        self, duration_ts: int, batch_size: int, init_state=None
     ) -> tuple[Trajectory, AgentState]:
         if not self.initialized:
             raise ValueError(
@@ -102,7 +102,7 @@ class TrajectoryGenerator(BaseControl):
             )
 
         ndim = self.gym.arena.ndim
-        B, T = batch_size, self.gym.to_ts(duration)
+        B, T = batch_size, duration_ts
         traj_builder = TrajectoryBuilder(
             max_length=T, batch_size=B, ndim=ndim, device=self.bhv_device
         )

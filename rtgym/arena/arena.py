@@ -156,6 +156,15 @@ class Arena:
 
         return inb, flat, pos.device
 
+    def validate_index(self, pos: torch.Tensor) -> torch.Tensor:
+        """
+        Validate whether given positions are within arena bounds and free space.
+        Returns a boolean mask for validity (not out of bounds, not in wall).
+        """
+        if self._validate_index_compiled:
+            return self._validate_index_compiled(pos)
+        return self._validate_index_kernel(pos)
+
     # def validate_index(self, pos: torch.Tensor) -> torch.Tensor:
     #     if self._validate_index_compiled:
     #         return self._validate_index_compiled(pos)
