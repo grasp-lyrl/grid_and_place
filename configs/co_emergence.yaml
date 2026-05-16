@@ -47,6 +47,7 @@ model:
   d_free: 1024
   alpha: 0.5
   noise_level: 0.8
+  use_motion: true
 
 training:
   batch_size: 256
@@ -61,3 +62,4 @@ logging:
   save_every: 2000
   log_every: 1000
   rma_decay: 0.995
+  downsample_ratio: 3
