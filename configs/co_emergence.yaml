@@ -59,7 +59,7 @@ training:
   masking_ratio: 0.2
 
 logging:
-  save_every: 2000
+  save_every: 10000
   log_every: 1000
   rma_decay: 0.995
   downsample_ratio: 3
