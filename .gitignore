@@ -5,6 +5,7 @@ __pypackages__/
 *.pth
 runs/*
 !runs/paper/
+!runs/paper/**/*.npz
 
 # Distribution / packaging
 .Python
@@ -25,6 +26,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+__pycache__/
+*.py[cod]
 
 # Jupyter Notebook
 .ipynb_checkpoints
