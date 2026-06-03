@@ -60,6 +60,6 @@ training:
 
 logging:
   save_every: 10000
-  log_every: 1000
+  log_every: 2500
   rma_decay: 0.995
   downsample_ratio: 3
