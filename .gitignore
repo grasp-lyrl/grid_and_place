@@ -3,7 +3,8 @@ __pypackages__/
 *.npz
 *.npy
 *.pth
-runs/
+runs/*
+!runs/paper/
 
 # Distribution / packaging
 .Python

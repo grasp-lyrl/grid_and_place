@@ -47,10 +47,14 @@ pip3 install torch
 
 ### Base experiment
 ```bash
-python train.py --config co_emergence --name co_emergence --save_dir paper
+python train.py --config co_emergence --name co_emergence --save_dir default
+```
+Base experiment with clear grid cell emergence
+```bash
+python train.py --config co_emergence_clear_gc --name co_emergence_clear_gc --save_dir default
 ```
 
 ### Save more frequently to record the co-emergence sequence of two cell types
 ```bash
-python train.py --config co_emergence --name co_emergence_sequence --save_dir paper logging.save_every=2000
+python train.py --config co_emergence --name co_emergence_sequence --save_dir default logging.save_every=2000
 ```
